@@ -1,0 +1,60 @@
+version: "2.0"
+
+stories:
+
+        #- story: happy path
+        #  steps:
+        #  - intent: greet
+        #  - action: utter_greet
+        #  - intent: mood_great
+        #  - action: utter_happy
+
+        #- story: sad path 1
+        #  steps:
+        #  - intent: greet
+        #  - action: utter_greet
+        #  - intent: mood_unhappy
+        #  - action: utter_cheer_up
+        #  - action: utter_did_that_help
+        #  - intent: affirm
+        #  - action: utter_happy
+
+        #- story: sad path 2
+        #  steps:
+        #  - intent: greet
+        #  - action: utter_greet
+        #  - intent: mood_unhappy
+        #  - action: utter_cheer_up
+        #  - action: utter_did_that_help
+        #  - intent: deny
+        #  - action: utter_goodbye
+
+- story: new project counseling
+  steps:
+  - intent: greet
+  - action: utter_introduction
+  - action: utter_option_introduction
+  - intent: start_project
+  - action: utter_address
+  - intent: answer_address
+  - action: utter_phone_number
+  - intent: answer_phone_number
+  - action: utter_confirmation
+  - intent: affirm
+  - action: utter_goodbye
+  
+- story: existing project counseling
+  steps:
+  - intent: greet
+  - action: utter_introduction
+  - action: utter_option_introduction
+  - intent: existing_project
+  - action: utter_address
+  - intent: answer_address
+  - action: utter_phone_number
+  - intent: answer_phone_number
+  - action: utter_confirmation
+  - intent: affirm
+  - action: utter_goodbye
+
+

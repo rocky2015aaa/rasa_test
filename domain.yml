@@ -1,0 +1,55 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye 
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - start_project
+  - existing_project
+  - answer_address
+  - answer_phone_number
+  - answer_email
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  
+  utter_introduction:
+  - text: "Hi. I’m Elli. Your A.I solar assistant. I can help you will all kinds of things. Where shall we begin?"
+
+  utter_option_introduction:
+  - text: "- Start a new project - Open an existing project"
+
+  utter_address:
+  - text: "what’s your address?"
+    
+  utter_phone_number:
+  - text: "what’s your phone number?"
+    
+  utter_confirmation:
+  - text: "Is that all information for project?"
+
+    
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
