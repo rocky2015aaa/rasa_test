@@ -30,8 +30,3 @@ stories:
   - intent: speak_to_human
   - action: utter_reach_human_agent
   - action: action_talk_to_user
-- story: Story from Conversation ID 9165d7b5268d46f5a3c0be076b84f682
-  steps:
-  - intent: start
-  - action: utter_introduction
-  - action: utter_option_introduction
