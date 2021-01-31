@@ -121,6 +121,10 @@ nlu:
   examples: |
     - [/start](conversation_begin)
 
+- intent: exit
+  examples: |
+    - [/exit](conversation_terminate)
+
 - intent: livechat
   examples: |
     - livechat
@@ -128,3 +132,7 @@ nlu:
 - regex: conversation_begin
   examples: |
     - ^/start$
+
+- regex: conversation_terminate
+  examples: |
+    - ^/exit$

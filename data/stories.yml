@@ -61,5 +61,3 @@ stories:
   - intent: speak_to_human
   - action: utter_reach_human_agent
   - action: action_talk_to_user
-  - intent: livechat
-  - action: action_talk_to_human_agent

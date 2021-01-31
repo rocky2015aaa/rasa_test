@@ -5,7 +5,8 @@ import time
 
 app = Flask(__name__)
 
-sender_store = {"123": {"paused": True, "replies": []}}
+sender_store = {"123": {"paused": True, "replies": []},
+                "456": {"paused": True, "replies": []}}
 
 @app.route('/handoff/<sender_id>', methods=["GET","POST"])
 def handoff(sender_id):

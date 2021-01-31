@@ -36,5 +36,4 @@ policies:
 #     epochs: 100
    - name: RulePolicy
 #   - name: MappingPolicy
-#   - name: FormPolicy
 

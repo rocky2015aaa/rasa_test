@@ -12,6 +12,7 @@ from __future__ import unicode_literals
 
 from typing import Text, Dict, Any, List
 
+from rasa_sdk.forms import FormAction
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import (
     SlotSet,
@@ -84,6 +85,30 @@ class ActionTalkingToHuman(Action):
             f"Resumed this conversation, with ID: " f"{sender_id}."
         )
         return [ConversationResumed()]
+
+class ActionForm(Action):
+   def name(self) -> Text:
+       return "action_form"
+
+   def requiredslot():
+       return ['user_message']
+
+   def submit():
+       message = ""
+       while message == "":
+           message = tracker.latest_message['text']
+           url = "http://127.0.0.1:5000/handoff/456"
+           data = {'message': message}
+           headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+           req = requests.post(url, data=json.dumps(data), headers=headers)
+           resp = json.loads(req.text)
+           if "error" in resp:
+               raise Exception("Error fetching message: " + repr(resp["error"]))
+       return [SlotSet("user_message", None), FollowUpAction("action_talk_to_user")]
+
+   def run(self, dispatcher, tracker: Tracker, domain):
+       return []
+
 """
 class ActionTalkToUser(Action):
     def name(self) -> Text:
@@ -99,7 +124,8 @@ class ActionTalkToUser(Action):
                 raise Exception("Error fetching message: " + repr(resp["error"]))
             message = resp["message"]
         dispatcher.utter_message("Human agent: {}".format(message))
-        return []
+        return [FollowupAction('livechat_form')]
+
 
 class ActionToHumanAgent(Action):
     def name(self) -> Text:
@@ -109,11 +135,13 @@ class ActionToHumanAgent(Action):
         message = ""
         while message == "":
             message = tracker.latest_message['text']
-            url = "http://127.0.0.1:5000/handoff/123"
+            if message == "/exit":
+                return [SlotSet("user_message", None), FollowupAction("utter_goodbye")]
+            url = "http://127.0.0.1:5000/handoff/456"
             data = {'message': message}
             headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
             req = requests.post(url, data=json.dumps(data), headers=headers)
             resp = json.loads(req.text)
             if "error" in resp:
                 raise Exception("Error fetching message: " + repr(resp["error"]))
-        return []
+        return [SlotSet("user_message", None), FollowupAction("action_talk_to_user")]

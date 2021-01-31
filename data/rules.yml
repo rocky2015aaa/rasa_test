@@ -11,3 +11,11 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: make livechat loop
+  condition:
+  - slot_was_set:
+    - user_message: true
+  steps:
+  - action: livechat_form
+  - action: action_talk_to_human_agent

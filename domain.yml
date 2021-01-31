@@ -29,6 +29,8 @@ intents:
       use_entities: true
   - start:
       use_entities: true
+  - exit:
+      use_entities: true
   - speak_to_human:
       use_entities: true
   - livechat:
@@ -39,6 +41,9 @@ entities:
   - conversation_begin
 slots:
   address:
+    type: text
+    influence_conversation: false
+  user_message:
     type: text
     influence_conversation: false
 responses:
@@ -85,4 +90,7 @@ forms:
   information_form:
     address:
       - type: from_text
-
+        entity: address
+  livechat_form:
+    user_message:
+      - type: from_text
