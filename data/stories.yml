@@ -31,30 +31,35 @@ stories:
 
 - story: new project counseling
   steps:
-  - intent: greet
+  - intent: start
   - action: utter_introduction
   - action: utter_option_introduction
   - intent: start_project
-  - action: utter_address
-  - intent: answer_address
-  - action: utter_phone_number
-  - intent: answer_phone_number
+  - action: information_form
+  - action: utter_answer_address
   - action: utter_confirmation
   - intent: affirm
   - action: utter_goodbye
   
 - story: existing project counseling
   steps:
-  - intent: greet
+  - intent: start
   - action: utter_introduction
   - action: utter_option_introduction
   - intent: existing_project
-  - action: utter_address
-  - intent: answer_address
-  - action: utter_phone_number
-  - intent: answer_phone_number
+  - action: information_form
+  - action: utter_answer_address
   - action: utter_confirmation
   - intent: affirm
   - action: utter_goodbye
 
-
+- story: speak to human
+  steps:
+  - intent: start
+  - action: utter_introduction
+  - action: utter_option_introduction
+  - intent: speak_to_human
+  - action: utter_reach_human_agent
+  - action: action_talk_to_user
+  - intent: livechat
+  - action: action_talk_to_human_agent

@@ -1,55 +1,88 @@
-version: "2.0"
-
-intents:
-  - greet
-  - goodbye 
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - start_project
-  - existing_project
-  - answer_address
-  - answer_phone_number
-  - answer_email
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-  
-  utter_introduction:
-  - text: "Hi. I’m Elli. Your A.I solar assistant. I can help you will all kinds of things. Where shall we begin?"
-
-  utter_option_introduction:
-  - text: "- Start a new project - Open an existing project"
-
-  utter_address:
-  - text: "what’s your address?"
-    
-  utter_phone_number:
-  - text: "what’s your phone number?"
-    
-  utter_confirmation:
-  - text: "Is that all information for project?"
-
-    
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+  - greet:
+      use_entities: true
+  - goodbye:
+      use_entities: true
+  - affirm:
+      use_entities: true
+  - deny: 
+      use_entities: true
+  - mood_great:
+      use_entities: true
+  - mood_unhappy:
+      use_entities: true
+  - bot_challenge:
+      use_entities: true
+  - start_project:
+      use_entities: true
+  - existing_project:
+      use_entities: true
+  - answer_address:
+      use_entities: true
+  - answer_phone_number:
+      use_entities: true
+  - answer_email:
+      use_entities: true
+  - start:
+      use_entities: true
+  - speak_to_human:
+      use_entities: true
+  - livechat:
+      use_entities: true
+
+entities:
+  - address
+  - conversation_begin
+slots:
+  address:
+    type: text
+    influence_conversation: false
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+  utter_cheer_up:
+    - image: "https://i.imgur.com/nGF1K8f.jpg"
+      text: "Here is something to cheer you up:"
+  utter_did_that_help:
+    - text: "Did that help you?"
+  utter_happy:
+    - text: "Great, carry on!"
+  utter_goodbye:
+    - text: "Bye"
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+  utter_introduction:
+    - text: "Hi. I’m Elli. Your A.I solar assistant. I can help you will all kinds of things."
+  utter_option_introduction:
+    - buttons:
+        - payload: /start_project
+          title: "Start a new project"
+        - payload: /existing_project
+          title: "Open an existing project"
+        - payload: /speak_to_human
+          title: "Speak to Human"
+      text: "Where shall we begin?"
+  utter_ask_address:
+    - text: "What’s your address?"
+  utter_answer_address:
+    - text: "Your address is {address}"
+  utter_confirmation:
+    - text: "Is that all information for project?"
+  utter_reach_human_agent:
+    - text: "Reaching out to a human agent..."
+actions:
+  - action_talk_to_user
+  - action_talk_to_human_agent
+  - utter_introduction
+  - utter_answer_address
+  - utter_confirmation
+  - utter_goodbye
+forms:
+  information_form:
+    address:
+      - type: from_text
+

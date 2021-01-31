@@ -6,6 +6,7 @@ nlu:
     - hey
     - hello
     - hi
+    - Hi
     - hello there
     - good morning
     - good evening
@@ -102,11 +103,28 @@ nlu:
     - the project
     - existing project
     - Existing project
-    
-- intent: answer_address
+    - Open an existing project
+
+- intent: existing_project
   examples: |
-    - address is
-    
-- intent: answer_phone_number
+    - the project
+    - existing project
+    - Existing project
+    - Open an existing project
+
+- intent: speak_to_human
   examples: |
-    - phone number is
+    - speark to human
+    - Speak to Human
+
+- intent: start
+  examples: |
+    - [/start](conversation_begin)
+
+- intent: livechat
+  examples: |
+    - livechat
+
+- regex: conversation_begin
+  examples: |
+    - ^/start$
