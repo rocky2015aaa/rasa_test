@@ -1,34 +1,5 @@
 version: "2.0"
-
 stories:
-
-        #- story: happy path
-        #  steps:
-        #  - intent: greet
-        #  - action: utter_greet
-        #  - intent: mood_great
-        #  - action: utter_happy
-
-        #- story: sad path 1
-        #  steps:
-        #  - intent: greet
-        #  - action: utter_greet
-        #  - intent: mood_unhappy
-        #  - action: utter_cheer_up
-        #  - action: utter_did_that_help
-        #  - intent: affirm
-        #  - action: utter_happy
-
-        #- story: sad path 2
-        #  steps:
-        #  - intent: greet
-        #  - action: utter_greet
-        #  - intent: mood_unhappy
-        #  - action: utter_cheer_up
-        #  - action: utter_did_that_help
-        #  - intent: deny
-        #  - action: utter_goodbye
-
 - story: new project counseling
   steps:
   - intent: start
@@ -40,7 +11,6 @@ stories:
   - action: utter_confirmation
   - intent: affirm
   - action: utter_goodbye
-  
 - story: existing project counseling
   steps:
   - intent: start
@@ -52,7 +22,6 @@ stories:
   - action: utter_confirmation
   - intent: affirm
   - action: utter_goodbye
-
 - story: speak to human
   steps:
   - intent: start
@@ -61,3 +30,8 @@ stories:
   - intent: speak_to_human
   - action: utter_reach_human_agent
   - action: action_talk_to_user
+- story: Story from Conversation ID 9165d7b5268d46f5a3c0be076b84f682
+  steps:
+  - intent: start
+  - action: utter_introduction
+  - action: utter_option_introduction
